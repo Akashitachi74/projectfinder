@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects with Source Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Projects with Source Code</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Welcome to the Best Coding Projects Collection</h2>
+        <p>Find projects with source code in Python, Java, HTML, and more.</p>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <div>
+            <button onclick="filterProjects('All')">All</button>
+            <button onclick="filterProjects('Python')">Python</button>
+            <button onclick="filterProjects('Java')">Java</button>
+            <button onclick="filterProjects('JavaScript')">JavaScript</button>
+            <button onclick="filterProjects('C#')">C#</button>
+            <button onclick="filterProjects('ReactJS')">ReactJS</button>
+            <button onclick="filterProjects('PHP')">PHP</button>
+        </div>
+        <br>
+        <div class="project-list" id="project-list"></div>
+    </section>
+
+    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: support@codingprojects.com</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Coding Projects. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+<script>
+
+    const projects = [
+        { name: "To-Do App", language: "Python", file: "ToDoApp.zip" },
+        { name: "Student Management System", language: "Java", file: "StudentManagementSystem.zip" },
+        { name: "Portfolio Website", language: "HTML/CSS/JS", file: "PortfolioWebsite.zip" },
+        { name: "Bank Management System", language: "Java", file: "BankManagementSystem.zip" },
+        { name: "BMI Calculator", language: "JavaScript", file: "BMICalculator.zip" },
+        { name: "Chat Application", language: "Python", file: "ChatApplication.zip" },
+        { name: "Contact Management System", language: "Java", file: "ContactManagementSystem.zip" },
+        { name: "Currency Converter", language: "Python", file: "CurrencyConverter.zip" },
+        { name: "E-Commerce System", language: "PHP", file: "ECommerceSystem.zip" },
+        { name: "Employee Management System", language: "C#", file: "EmployeeManagementSystem.zip" },
+        { name: "Expense Splitter", language: "JavaScript", file: "ExpenseSplitter.zip" },
+        { name: "Expense Tracker", language: "Python", file: "ExpenseTracker.zip" },
+        { name: "Hotel Management System", language: "Java", file: "HotelManagementSystem.zip" },
+        { name: "Inventory Management System", language: "C#", file: "InventoryManagementSystem.zip" },
+        { name: "Library Management System", language: "Java", file: "LibraryManagementSystem.zip" },
+        { name: "Notes App", language: "ReactJS", file: "NotesApp.zip" },
+        { name: "Quiz App", language: "JavaScript", file: "QuizApp.zip" },
+        { name: "Simple Calculator", language: "Python", file: "SimpleCalculator.zip" },
+        { name: "Snake Game", language: "Python", file: "SnakeGame.zip" },
+        { name: "Student Grade Calculator", language: "JavaScript", file: "StudentGradeCalculator.zip" },
+        { name: "Text Encryption Decryption", language: "Python", file: "TextEncryptionDecryption.zip" },
+        { name: "URL Shortener", language: "Python", file: "URLShortener.zip" },
+        { name: "Weather App", language: "JavaScript", file: "WeatherApp.zip" },
+        { name: "Weather Dashboard", language: "ReactJS", file: "WeatherDashboard.zip" }
+    ];
+
+    function displayProjects(filter) {
+        const projectList = document.getElementById("project-list");
+        projectList.innerHTML = "";
+        projects.forEach(project => {
+            if (filter === "All" || project.language === filter) {
+                projectList.innerHTML += `
+                    <div class="project">
+                        <h3>${project.name} (${project.language})</h3>
+                        <p>A project built using ${project.language}.</p>
+                        <button onclick="toggleCode('${project.file}')">👀 View Code</button>
+                        <a href="downloads/${project.file}" download>📥 Download Source Code</a>
+                        <div id="${project.file}" class="code-container" style="display: none;">
+                            <p>Code preview coming soon...</p>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    }
+
+    function filterProjects(language) {
+        displayProjects(language);
+    }
+
+    function toggleCode(id) {
+        var codeSection = document.getElementById(id);
+        codeSection.style.display = codeSection.style.display === "none" ? "block" : "none";
+    }
+
+    // Display all projects by default
+    displayProjects("All");
+</script>
+</html>
