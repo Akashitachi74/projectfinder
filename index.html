@@ -78,25 +78,30 @@
         { name: "Weather Dashboard", language: "ReactJS", file: "WeatherDashboard.zip" }
     ];
 
-    function displayProjects(filter) {
-        const projectList = document.getElementById("project-list");
-        projectList.innerHTML = "";
-        projects.forEach(project => {
-            if (filter === "All" || project.language === filter) {
-                projectList.innerHTML += `
-                    <div class="project">
-                        <h3>${project.name} (${project.language})</h3>
-                        <p>A project built using ${project.language}.</p>
-                        <button onclick="toggleCode('${project.file}')">👀 View Code</button>
-                        <a href="downloads/${project.file}" download>📥 Download Source Code</a>
-                        <div id="${project.file}" class="code-container" style="display: none;">
-                            <p>Code preview coming soon...</p>
-                        </div>
+  function displayProjects(filter) {
+    const projectList = document.getElementById("project-list");
+    projectList.innerHTML = "";
+
+    projects.forEach(project => {
+        if (filter === "All" || project.language === filter) {
+            projectList.innerHTML += `
+                <div class="project">
+                    <h3>${project.name} (${project.language})</h3>
+                    <p>A project built using ${project.language}.</p>
+                    <button onclick="toggleCode('${project.file}')">👀 View Code</button>
+                    
+                    <!-- Updated download link -->
+                    <a href="https://raw.githubusercontent.com/Akashitachi74/projectfinder/main/downloads/${project.file}" download>⬇️ Download Source Code</a>
+
+                    <div id="${project.file}" class="code-container" style="display: none;">
+                        <p>Code preview coming soon...</p>
                     </div>
-                `;
-            }
-        });
-    }
+                </div>
+            `;
+        }
+    });
+}
+
 
     function filterProjects(language) {
         displayProjects(language);
